@@ -64,16 +64,16 @@ Os seguintes modelos foram treinados e testados em suas versões mais básicas:
 
 | modelo | accuracy	| precision | recall | f1_weighted | roc_auc |	train_time_s |
 | --- | --- | --- | --- | --- | --- | --- |
-| baseline | 0.842977 | 0.000000 |	0.000000 | 0.771154 |	0.500000 |	1.263 |
-| KNeighborsClassifier | 0.845150 | 0.515546 |	0.248907 | 0.821761 |	0.699211 |	13.896 |
-| DecisionTreeClassifier | 0.769622 | 0.292447 |	0.329894 | 0.775062 |	0.592384 |	2.318 |
-| GaussianNB | 0.770640 | 0.330987 |	0.451540 | 0.784242 |	0.718822 |	1.376 |
+| baseline | 0.842977 | 0.000000 |	0.000000 | 0.771154 |	0.500000 |	1.256 |
+| KNeighborsClassifier | 0.845150 | 0.515546 |	0.248907 | 0.821761 |	0.699211 |	8.763 |
+| DecisionTreeClassifier | 0.769622 | 0.292447 |	0.329894 | 0.775062 |	0.592384 |	1.350 |
+| GaussianNB | 0.770640 | 0.330987 |	0.451540 | 0.784242 |	0.718822 |	10.041 |
 | VotingClassifier | 0.831969 | 0.453246 |	0.333134 | 0.821220 |	0.726344 |	9.910 |
-| RandomForestClassifier | 0.838675 | 0.473261 |	0.237703 | 0.815556 |	0.728991 |	24.416 |
-| ExtraTreesClassifier | 0.825401 | 0.407183 |	0.245651 | 0.806903 |	0.670472 |	33.197 |
-| GradientBoostingClassifier | 0.860228 | 0.662293 |	0.225913 | 0.829969 |	0.790553 |	29.295 |
-| AdaBoostClassifier | 0.857823 | 0.669517 |	0.186746 | 0.822170 |	0.766896 |	16.303 |
-| XGBClassifier | 0.855280 | 0.577453 |	0.294262 | 0.834956 |	0.779687 |	5.905 |
+| RandomForestClassifier | 0.838675 | 0.473261 |	0.237703 | 0.815556 |	0.728991 |	24.933 |
+| ExtraTreesClassifier | 0.825401 | 0.407183 |	0.245651 | 0.806903 |	0.670472 |	32.154 |
+| GradientBoostingClassifier | 0.860228 | 0.662293 |	0.225913 | 0.829969 |	0.790553 |	27.467 |
+| AdaBoostClassifier | 0.857823 | 0.669517 |	0.186746 | 0.822170 |	0.766896 |	17.762 |
+| XGBClassifier | 0.855280 | 0.577453 |	0.294262 | 0.834956 |	0.779687 |	4.223 |
 
 ## Análise dos resultados iniciais
 Os cinco modelos com melhor **acurácia** foram:
@@ -102,15 +102,15 @@ A tabela a seguir mostra um resumo dos modelos que se destacaram nas métricas a
 
 | modelo | melhor acurácia | melhor recall | melhor roc_auc | tempo de treinamento |
 | --- | --- | --- | --- | --- |
-| XGBClassifier | ✅ | ✅ | ✅  | 5.905 |
-| VotingClassifier | ❌ | ✅ | ✅ | 9.910 |
-| KNeighborsClassifier | ✅ | ✅ | ❌ | 13.896 |
-| GradientBoostingClassifier | ✅ | ❌ | ✅ | 29.295 |
-| baseline | ✅ | ❌ | ❌ | 1.263 |
-| GaussianNB | ❌ | ✅ | ❌ | 1.376 | 
-| DecisionTreeClassifier | ❌ | ✅ | ❌ | 2.318 |
+| XGBClassifier | ✅ | ✅ | ✅  | 4.223 |
+| KNeighborsClassifier | ✅ | ✅ | ❌ | 8.763 |
+| VotingClassifier | ❌ | ✅ | ✅ | 10.041 |
+| GradientBoostingClassifier | ✅ | ❌ | ✅ | 27.467 |
+| baseline | ✅ | ❌ | ❌ | 1.256 |
+| GaussianNB | ❌ | ✅ | ❌ | 1.350 |
+| DecisionTreeClassifier | ❌ | ✅ | ❌ | 2.329 |
 | AdaBoostClassifier | ✅ | ❌ | ❌ | 16.303 |
-| RandomForestClassifier | ❌ | ❌ | ✅ | 24.416 |
+| RandomForestClassifier | ❌ | ❌ | ✅ | 24.933 |
  
 Desse modo, o modelo que seguiremos para a etapa de finetuning é o **XGBClassifier**.
 
@@ -143,9 +143,9 @@ E obtivemos os seguintes resultados:
 
 | modelo |	accuracy |	precision |	recall |	f1_weighted |	test_roc_auc |	train_time_s |
 | --- | --- | --- | --- | --- | --- | --- |
-| Baseline | 	0.842977  |	0.000000 |	0.000000 |	0.771154 |	0.500000 |	1 .455 |
-| XGBClassifier |	0.855280 |	0.577453 |	0.294262 |	0.834956 |	0.779687 |	5.561 |
-| XGBClassifier_tun |	0.779058 |	0.381445 |	0.655088 |	0.800300 |	0.793341 |	4.736 |
+| Baseline | 	0.842977  |	0.000000 |	0.000000 |	0.771154 |	0.500000 |	1.267 |
+| XGBClassifier |	0.855280 |	0.577453 |	0.294262 |	0.834956 |	0.779687 |	6.330 |
+| XGBClassifier_tun |	0.779058 |	0.381445 |	0.655088 |	0.800300 |	0.793341 |	4.812 |
 
 Apesar de ter reduzido a acurácia, o modelo otimizado melhorou consideravelmente a métrica test_recall (+0,36), sem haver uma redução significativa o test_f1_weighted (-0,3). Além disso, ainda houve um aumento na test_roc_auc (+0,02) com uma leve redução do tempo de treinamento.
 
@@ -162,8 +162,8 @@ A comparação do modelo baseline com o modelo final pode ser vista na tabela ab
 
 | Modelo | acurácia | recall | roc_auc | Tempo de treino |
 |---:|---:|---:|---:|---:|
-| Baseline | 0.842977 | 0.000000 | 0.500000 | 1.455 | 
-| XGBClassifier_tun | 0.779058 | 0.655088 | 0.793341 | 4.736 |
+| Baseline | 0.842977 | 0.000000 | 0.500000 | 1.267 |
+| XGBClassifier_tun | 0.779058 | 0.655088 | 0.793341 | 4.812 |
 
 Assim, por mais que o modelo final tenha conseguido uma acurácia menor do que o modelo baseline, ele superou, e muito, as demais métricas (recall e roc_auc), mostrando-se um bom preditor e com o tempo de treinamento muito abaixo do estipulado nos critérios de sucesso iniciais (menos de 30 segundos).
 
