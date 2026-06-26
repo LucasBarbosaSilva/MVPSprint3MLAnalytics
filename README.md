@@ -115,7 +115,31 @@ A tabela a seguir mostra um resumo dos modelos que se destacaram nas métricas a
 Desse modo, o modelo que seguiremos para a etapa de finetuning é o **XGBClassifier**.
 
 ## Resultados após otimização:
-Após realizar um finetuning das principais variáveis do modelo XGBClassifier obtivemos os seguintes resultados:
+
+Para o modelo XGBClassifier os seguintes hiperparâmetros foram testados:
+
+| hiperparâmetro | descrição | valores de teste |
+| --- | --- | --- |
+| n_estimators | Número total de árvores a construir. O padrão é 100. | Valores aleatórios entre 50 e 300 |
+| max_depth | Profundidade máxima de uma árvore. As árvores mais profundas <br> captam padrões mais complexos, mas aumentam o risco de *overfitting*. O valor padrão é 3. | Valores aleatórios entre 3 e 10 |
+| learning_rate | Ou `eta`. Ela escala a contribuição de cada nova árvore. O valor predefinido é 0,1. | [0.01, 0.05, 0.1, 0.2] |
+| subsample | Razão de subamostragem das instâncias de treinamento. Definir esse valor como 0,8 <br> significa que o XGBoost seleciona aleatoriamente 80% das linhas de dados para construir as árvores. O padrão é 1. | [0.5, 0.6, 0.8, 1.0] |
+| colsample_bytree | Proporção de subamostragem de colunas (recursos) ao construir cada árvore. O padrão é 1. | [0.6, 0.8, 1.0] |
+| scale_pos_weight | Controla o equilíbrio entre pesos positivos e negativos. Muito útil para lidar com conjuntos de dados desbalanceados. | [1, (y.value_counts()[0] / y.value_counts()[1])] |
+
+Após realizar um finetuning das principais variáveis do modelo XGBClassifier os melhores valores para os parâmetros encontrados:
+```
+{
+ 'colsample_bytree': 0.8,
+ 'learning_rate': 0.05,
+ 'max_depth': 6,
+ 'n_estimators': 108,
+ 'scale_pos_weight': np.float64(5.368659793814433),
+ 'subsample': 0.5
+}
+```
+
+E obtivemos os seguintes resultados:
 
 | modelo |	accuracy |	precision |	recall |	f1_weighted |	test_roc_auc |	train_time_s |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -123,7 +147,7 @@ Após realizar um finetuning das principais variáveis do modelo XGBClassifier o
 | XGBClassifier |	0.855280 |	0.577453 |	0.294262 |	0.834956 |	0.779687 |	5.561 |
 | XGBClassifier_tun |	0.779058 |	0.381445 |	0.655088 |	0.800300 |	0.793341 |	4.736 |
 
-No entanto, para o modelo XGBooster a diferença foi significativa. Apesar de ter reduzido a acurácia, o modelo otimizado melhorou consideravelmente a métrica test_recall (+0,36), sem haver uma redução significativa o test_f1_weighted (-0,3). Além disso, ainda houve um aumento na test_roc_auc (+0,02) com uma leve redução do tempo de treinamento.
+Apesar de ter reduzido a acurácia, o modelo otimizado melhorou consideravelmente a métrica test_recall (+0,36), sem haver uma redução significativa o test_f1_weighted (-0,3). Além disso, ainda houve um aumento na test_roc_auc (+0,02) com uma leve redução do tempo de treinamento.
 
 ## Conclusão
 O objetivo deste modelo era realizar a predição do comportamento de um cliente ao ser abordado por uma campanha de marketing. Diversos modelos foram analisados a fim de encontrar o que melhor se adapte ao problema proposto.
