@@ -9,12 +9,6 @@
 ## Descrição do Problema:
 Consiste na elaboração de um modelo de classificação para a predição do resultado de uma campanha de marketing direto (chamadas telefônicas) de uma instituição bancária portuguesa. O objetivo da classificação é prever se o cliente irá se inscrever em um depósito a prazo (variável result).
 
-## Hipóteses levantadas:
-1. Clientes com resultado anterior 'sucesso' tendem a se inscrever novamente?
-2. Clientes mais jovens (15 a 24 anos) tendem a se inscrever mais que clientes adultos (25 a 60 anos)?
-3. Ligar mais vezes para um cliente diminui a chance dele contratar?
-4. Dar mais dias de folga para o cliente, aumenta as chances de fechar contrato?
-
 ## Fonte dos dados
 
 O dataset [Bank Marketing](https://archive.ics.uci.edu/dataset/222/bank+marketing)   é um dataset disponível no UCI Machine Learning Repository. Os dados referem-se a campanhas de marketing direto de uma instituição bancária portuguesa. As campanhas de marketing baseavam-se em chamadas telefónicas. Frequentemente, era necessário mais do que um contacto com o mesmo cliente para apurar se o produto (depósito a prazo bancário) seria contratado ("sim") ou não ("não"). O dataset original é composto por 45211 instâncias e 17 colunas.
