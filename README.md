@@ -167,4 +167,4 @@ A comparação do modelo baseline com o modelo final pode ser vista na tabela ab
 
 Assim, por mais que o modelo final tenha conseguido uma acurácia menor do que o modelo baseline, ele superou, e muito, as demais métricas (recall e roc_auc), mostrando-se um bom preditor e com o tempo de treinamento muito abaixo do estipulado nos critérios de sucesso iniciais (menos de 30 segundos).
 
-Por fim, como próximos passos, poderíamos buscar treinar o modelo com mais dados positivos, para diminuir a diferença entre as classes, ou buscar encontrar um modelo com uma precisão mais alta, levando em consideração que talvez não seja interessante incomodar clientes que não aceitariam o contrato. 
+Por fim, como próximos passos, poderíamos buscar treinar o modelo com mais dados positivos, para diminuir a diferença entre as classes, ou buscar encontrar um modelo com uma precisão mais alta, levando em consideração que talvez não seja interessante incomodar clientes que não aceitariam o contrato. Além disso, poderíamos testar diferentes combinações de colunas, inclusive, trazendo as colunas contínuas de volta, a fim de comparar resultados.
